@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <main class="app">
+      <!-- ================= HEADER ================= -->
+      <header class="app-header">
+        <div class="header-info">
+          <h1>Task Manager</h1>
+          <p>One page • Modern UI • Persisted locally</p>
+        </div>
+
+        <div class="header-actions">
+          <div class="task-counter">
+            Total: <span id="totalCount">0</span> • Pending:
+            <span id="pendingCount">0</span> • Done:
+            <span id="doneCount">0</span>
+          </div>
+
+          <button type="button" id="seedBtn">Seed</button>
+
+          <button type="button" id="clearBtn">Clear All</button>
+        </div>
+      </header>
+
+      <!-- ================= FILTERS ================= -->
+      <section class="toolbar">
+        <div class="filters">
+          <button type="button" autofocus class="filter" id="btnAll">
+            All
+          </button>
+
+          <button type="button" class="filter" id="btnPending">Pending</button>
+
+          <button type="button" class="filter" id="btnDone">Done</button>
+        </div>
+
+        <div class="search-box">
+          <label for="searchInput" class="sr-only"> Search tasks </label>
+
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search title/description..."
+          />
+        </div>
+      </section>
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <div class="content">
+        <!-- ================= ADD TASK ================= -->
+        <section class="task-form-section">
+          <h2>Add New Task</h2>
+
+          <p class="form-description">
+            Pending tasks are
+            <span class="status-badge pending">Yellow</span>. Mark done to turn
+            <span class="status-badge done">Green</span>.
+          </p>
+
+          <form id="taskForm">
+            <div class="form-group">
+              <label for="title"> Title (required) </label>
+
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="e.g., Record DOM lesson video"
+                required
+              />
+              <div id="title Error" class="error">please fill in the title</div>
+            </div>
+
+            <div class="form-group">
+              <label for="description"> Description (optional, max 300) </label>
+
+              <textarea
+                id="description"
+                name="description"
+                maxlength="300"
+                placeholder="Details..."
+              ></textarea>
+              <div id="description Error" class="error">
+                please fill in the description
+              </div>
+            </div>
+
+            <div class="form-buttons">
+              <button type="reset" id="resetBtn" class="secondary-btn">
+                Reset
+              </button>
+
+              <button type="submit" id="submitBtn" class="primary-btn">
+                Add Task
+              </button>
+            </div>
+          </form>
+
+          <p class="keyboard-tip">
+            Tip: Press
+            <kbd>Ctrl</kbd>
+            +
+            <kbd>Enter</kbd>
+            to add quickly.
+          </p>
+        </section>
+
+        <!-- ================= TASK LIST ================= -->
+        <section class="tasks-section">
+          <div class="tasks-header">
+            <h2>
+              Tasks
+              <span id="shownCount">0</span>
+              <span class="shown-text">shown</span>
+            </h2>
+          </div>
+          <div id="taskList" class="task-list">
+            <div id="emptyState" class="empty-state">
+              No tasks match your filter/search.
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
